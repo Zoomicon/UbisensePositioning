@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UbisensePositioning.Demo.WinForms", "UbisensePositioning.Demo.WinForms\UbisensePositioning.Demo.WinForms.csproj", "{7150D85C-0940-47E6-AEAB-0F200AF68354}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UbisensePositioning", "UbisensePositioning\UbisensePositioning.csproj", "{03D29BD2-03DF-4F86-A5DE-9586AA8C150E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7150D85C-0940-47E6-AEAB-0F200AF68354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7150D85C-0940-47E6-AEAB-0F200AF68354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7150D85C-0940-47E6-AEAB-0F200AF68354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7150D85C-0940-47E6-AEAB-0F200AF68354}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03D29BD2-03DF-4F86-A5DE-9586AA8C150E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03D29BD2-03DF-4F86-A5DE-9586AA8C150E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03D29BD2-03DF-4F86-A5DE-9586AA8C150E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03D29BD2-03DF-4F86-A5DE-9586AA8C150E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
