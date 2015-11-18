@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>UbisensePositioning</id>
+        <version>1.0.0</version>
+        <title>UbisensePositioning</title>
+        <authors>birbilis</authors>
+        <owners>birbilis</owners>
+        <licenseUrl>https://github.com/birbilis/UbisensePositioning/blob/master/LICENSE.txt</licenseUrl>
+        <projectUrl>https://github.com/birbilis/UbisensePositioning</projectUrl>
+        <iconUrl>https://github.com/birbilis/UbisensePositioning/blob/master/NuGet/Ubisense.png</iconUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <developmentDependency>true</developmentDependency>
+        <description>Easy access to Ubisense Positioning features</description>
+        <releaseNotes />
+        <copyright>Copyright 2015</copyright>
+        <tags>Ubisense Sensors Positioning</tags>
+        <dependencies>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\UbisensePositioning\bin\Release\UbisensePositioning.dll" target="lib\net40\UbisensePositioning.dll" />
+        <file src="..\Libraries\UbisensePlatform.dll" target="lib\net40\UbisensePlatform.dll" />
+        <file src="..\Libraries\UbisenseLocationServices.dll" target="lib\net40\UbisenseLocationServices.dll" />        
+    </files>
+</package>

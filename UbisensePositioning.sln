@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UbisensePositioning.Demo.Wi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UbisensePositioning", "UbisensePositioning\UbisensePositioning.csproj", "{03D29BD2-03DF-4F86-A5DE-9586AA8C150E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{B1EEF3C8-1A9A-49A3-896E-3B5CDB6AC735}"
+	ProjectSection(SolutionItems) = preProject
+		NuGet\Ubisense.png = NuGet\Ubisense.png
+		NuGet\UbisensePositioning.nuspec = NuGet\UbisensePositioning.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
