@@ -4,20 +4,18 @@
 
 //Based on Ubisense SDK's ObjectPosition sample
 
-using Ubisense.UName.Naming;
-using Ubisense.ULocation;
-using Ubisense.UBase;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Ubisense.UBase;
+using Ubisense.ULocation;
+using Ubisense.UName.Naming;
 
 namespace Ubisense.Positioning
 {
-
   //TODO: implement IDisposable and call into a protected ReleaseUbisense method
 
   public class UbisensePositioning
   {
-
     #region --- Fields ---
 
     protected Schema namingSchema;
@@ -26,7 +24,7 @@ namespace Ubisense.Positioning
     protected UObject? selectedObject; //=null
     protected bool initialized; //=false
 
-    #endregion
+    #endregion --- Fields ---
 
     #region --- Initialization ---
 
@@ -62,7 +60,7 @@ namespace Ubisense.Positioning
         Initialize();
     }
 
-    #endregion
+    #endregion --- Initialization ---
 
     #region --- Properties ---
 
@@ -82,7 +80,7 @@ namespace Ubisense.Positioning
       set { selectedObject = value; }
     }
 
-    #endregion
+    #endregion --- Properties ---
 
     #region --- Methods ---
 
@@ -105,8 +103,8 @@ namespace Ubisense.Positioning
       getObjectsAsyncWorker.DoWork += GetObjectsAsyncWorker_DoWork;
       getObjectsAsyncWorker.RunWorkerCompleted += GetObjectsAsyncWorker_Completed;
       getObjectsAsyncWorker.RunWorkerAsync();
-
     }
+
     private void GetObjectsAsyncWorker_DoWork(object sender, DoWorkEventArgs e)
     {
       objects = GetObjects();
@@ -118,7 +116,7 @@ namespace Ubisense.Positioning
         GetObjectsCompleted(this, objects);
     }
 
-    #endregion
+    #endregion GetObjects
 
     #region GetPosition
 
@@ -142,7 +140,7 @@ namespace Ubisense.Positioning
       return null;
     }
 
-    #endregion
+    #endregion GetPosition
 
     #region SetPosition
 
@@ -153,7 +151,8 @@ namespace Ubisense.Positioning
 
     public bool SetPosition(UObject obj, double x, double y = 0.0, double z = 0.0, double theta = 0.0)
     {
-      if (obj != null) {
+      if (obj != null)
+      {
         CheckInitialized();
         return multicell.SetObjectLocation(obj, new Position(x, y, z, theta));
       }
@@ -161,7 +160,7 @@ namespace Ubisense.Positioning
         return false;
     }
 
-    #endregion
+    #endregion SetPosition
 
     #region RemovePosition
 
@@ -181,9 +180,9 @@ namespace Ubisense.Positioning
         return false;
     }
 
-    #endregion
+    #endregion RemovePosition
 
-    #endregion
+    #endregion --- Methods ---
 
     #region --- Events ---
 
@@ -191,8 +190,6 @@ namespace Ubisense.Positioning
 
     public event GetObjectsCompletedEventHandler GetObjectsCompleted;
 
-    #endregion
-
+    #endregion --- Events ---
   }
-
 }
