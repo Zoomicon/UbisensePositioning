@@ -1,6 +1,6 @@
 ﻿//Project: UbisensePositioning (http://UbisensePositioning.codeplex.com)
 //Filename: UbisensePositioning.cs
-//Version: 20151110
+//Version: 20151124
 
 //Based on Ubisense SDK's ObjectPosition sample
 
@@ -144,20 +144,30 @@ namespace Ubisense.Positioning
 
     #region SetPosition
 
-    public bool SetPosition(double x, double y = 0.0, double z = 0.0, double theta = 0.0)
-    {
-      return SetPosition(selectedObject.Value, x, y, z, theta); //called method can handle null value
-    }
-
-    public bool SetPosition(UObject obj, double x, double y = 0.0, double z = 0.0, double theta = 0.0)
+    public bool SetPosition(UObject obj, Position p)
     {
       if (obj != null)
       {
         CheckInitialized();
-        return multicell.SetObjectLocation(obj, new Position(x, y, z, theta));
+        return multicell.SetObjectLocation(obj, p);
       }
       else
         return false;
+    }
+
+    public bool SetPosition(Position p)
+    {
+      return SetPosition(selectedObject.Value, p); //called method can handle null Value
+    }
+
+    public bool SetPosition(double x, double y = 0.0, double z = 0.0, double theta = 0.0)
+    {
+      return SetPosition(selectedObject.Value, new Position(x, y, z, theta)); //called method can handle null Value
+    }
+
+    public bool SetPosition(UObject obj, double x, double y = 0.0, double z = 0.0, double theta = 0.0)
+    {
+      return SetPosition(obj, new Position(x, y, z, theta));
     }
 
     #endregion SetPosition
