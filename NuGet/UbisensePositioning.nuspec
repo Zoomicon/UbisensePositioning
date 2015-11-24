@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>UbisensePositioning</id>
-        <version>1.0.0</version>
+        <version>1.1.0</version>
         <title>UbisensePositioning</title>
         <authors>birbilis</authors>
         <owners>birbilis</owners>
@@ -19,8 +19,8 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="..\UbisensePositioning\bin\Release\UbisensePositioning.dll" target="lib\net40\UbisensePositioning.dll" />
-        <file src="..\Libraries\UbisensePlatform.dll" target="lib\net40\UbisensePlatform.dll" />
-        <file src="..\Libraries\UbisenseLocationServices.dll" target="lib\net40\UbisenseLocationServices.dll" />        
+        <file src="..\UbisensePositioning\bin\Release\UbisensePositioning.dll" target="lib\net20\UbisensePositioning.dll" />
+        <file src="..\Libraries\UbisensePlatform.dll" target="lib\net20\UbisensePlatform.dll" />
+        <file src="..\Libraries\UbisenseLocationServices.dll" target="lib\net20\UbisenseLocationServices.dll" />
     </files>
 </package>
