@@ -10,122 +10,17 @@ Version: 20151201
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:ubisense="clr-namespace:Ubisense.Positioning.WPF;assembly=UbisensePositioning.WPF"
   mc:Ignorable="d"
 
   Width="525" Height="350"
-  Title="UbisensePositioning Demo"
+  Title=""
+
+  Closing="Window_Closing"
   >
 
-  <Window.Resources>
-    <Style TargetType="StackPanel">
-      <Setter Property="Margin" Value="5,5" />
-    </Style>
-    <Style TargetType="TextBlock">
-      <Setter Property="Margin" Value="5,0" />
-    </Style>
-    <Style TargetType="TextBox">
-      <Setter Property="MinWidth" Value="70" />
-      <Setter Property="MaxWidth" Value="80" />
-    </Style>
-    <Style TargetType="Button">
-      <Setter Property="Padding" Value="5,0" />
-      <Setter Property="Margin" Value="5,0" />
-      <Setter Property="MaxHeight" Value="30" />
-    </Style>
-  </Window.Resources>
-
   <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="*"/>
-      <RowDefinition Height="Auto" />
-      <RowDefinition Height="Auto" />
-    </Grid.RowDefinitions>
-
-    <!-- Region Available Objects -->
-
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="*" />
-      </Grid.RowDefinitions>
-
-      <!-- List header -->
-
-      <Grid Grid.Row="0" Margin="5,5">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition />
-          <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-
-        <TextBlock Grid.Column="0" Text="Available Objects" FontWeight="Bold" />
-        <TextBlock Grid.Column="1" Text="Name" />
-      </Grid>
-
-      <!-- List items -->
-
-      <ListBox x:Name="listEntries" Grid.Row="1" SelectionChanged="listEntries_SelectionChanged">
-        <ListBox.ItemTemplate>
-          <DataTemplate>
-            <Grid>
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-              </Grid.ColumnDefinitions>
-              <TextBlock Grid.Column="0" Text="{Binding Text}"/>
-              <TextBlock Grid.Column="1" Text="{Binding Name}"/>
-            </Grid>
-          </DataTemplate>
-
-        </ListBox.ItemTemplate>
-      </ListBox>
-
-    </Grid>
-
-    <!-- End Region -->
-
-    <!-- Region Selected Entry -->
-
-    <StackPanel Orientation="Vertical" Grid.Row="1">
-      <TextBlock Text="Selected Entry" FontWeight="Bold" />
-
-      <StackPanel Orientation="Horizontal">
-        <TextBlock Text="Object: " />
-        <TextBlock x:Name="lblSelectedObj" Text="---" />
-      </StackPanel>
-
-      <StackPanel Orientation="Horizontal">
-        <TextBlock Text="Name: " />
-        <TextBlock x:Name="lblSelectedName" Text="---" />
-      </StackPanel>
-    </StackPanel>
-
-    <!-- End Region -->
-
-    <!-- Region Position -->
-
-    <StackPanel Orientation="Vertical" Grid.Row="2">
-      <TextBlock Text="Position" FontWeight="Bold" />
-
-      <StackPanel Orientation="Horizontal">
-        <TextBlock Text="X" />
-        <TextBox x:Name="txtPositionX" />
-
-        <TextBlock Text="Y" />
-        <TextBox x:Name="txtPositionY" />
-
-        <TextBlock Text="Z" />
-        <TextBox x:Name="txtPositionZ" />
-
-        <TextBlock Text=" " />
-
-        <Button x:Name="btnGetPos" Click="btnGetPos_Click">Get</Button>
-        <Button x:Name="btnSetPos" Click="btnSetPos_Click">Set</Button>
-        <Button x:Name="btnReset" Click="btnRemove_Click">Remove</Button>
-      </StackPanel>
-
-    </StackPanel>
-
-    <!-- End Region -->
-
+    <ubisense:UbisensePositioningUI x:Name="ubisensePositioningUI" />
   </Grid>
+
 </Window>
