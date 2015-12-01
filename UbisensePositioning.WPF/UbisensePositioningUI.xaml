@@ -18,8 +18,11 @@ Version: 20151201
   <!-- Region Resources -->
 
   <UserControl.Resources>
+    <Style TargetType="ListBox">
+      <Setter Property="Margin" Value="5,0,5,5" />
+    </Style>
     <Style TargetType="StackPanel">
-      <Setter Property="Margin" Value="5,5" />
+      <Setter Property="Margin" Value="5,0,5,5" />
     </Style>
     <Style TargetType="TextBlock">
       <Setter Property="Margin" Value="5,0" />
@@ -37,7 +40,7 @@ Version: 20151201
 
   <!-- End Region-->
 
-  <Grid>
+  <Grid Margin="{Binding Margin}">
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto" />
       <RowDefinition Height="*"/>
@@ -68,12 +71,17 @@ Version: 20151201
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Column="0" Text="Available Objects" FontWeight="Bold" />
-        <TextBlock Grid.Column="1" Text="Name" />
+        <TextBlock Grid.Column="1" Text="Name" FontWeight="Bold" />
       </Grid>
 
       <!-- List items -->
 
-      <ListBox x:Name="listEntries" Grid.Row="1" SelectionChanged="listEntries_SelectionChanged">
+      <ListBox
+        x:Name="listEntries"
+        Grid.Row="1"
+        HorizontalContentAlignment="Stretch"
+        SelectionChanged="listEntries_SelectionChanged"
+        >
         <ListBox.ItemTemplate>
           <DataTemplate>
             <Grid>
