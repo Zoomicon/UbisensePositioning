@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Ubisense.Positioning.Demo.WinForms.Demo.WinForms.Properties {
+namespace Ubisense.Positioning.Demo.WPF.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

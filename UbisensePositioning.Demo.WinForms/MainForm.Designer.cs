@@ -2,7 +2,7 @@
 //Filename: MainForm.cs
 //Version: 20151110
 
-namespace Ubisense.Positioning
+namespace Ubisense.Positioning.Demo.WinForms
 {
   partial class MainForm
   {
@@ -66,7 +66,8 @@ namespace Ubisense.Positioning
       // 
       // listEntries
       // 
-      this.listEntries.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+      this.listEntries.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.listEntries.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ObjID,
@@ -93,7 +94,7 @@ namespace Ubisense.Positioning
       // 
       // groupBox1
       // 
-      this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+      this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.groupBox1.Controls.Add(this.lblSelectedName);
       this.groupBox1.Controls.Add(this.lblSelectedObj);
@@ -144,7 +145,7 @@ namespace Ubisense.Positioning
       // 
       // groupBoxPosition
       // 
-      this.groupBoxPosition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+      this.groupBoxPosition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.groupBoxPosition.Controls.Add(this.btnGetPos);
       this.groupBoxPosition.Controls.Add(this.btnRemove);

@@ -1,0 +1,14 @@
+﻿<!--
+Project: UbisensePositioning (http://UbisensePositioning.codeplex.com)
+Filename: App.xaml
+Version: 20151201
+-->
+
+<Application x:Class="Ubisense.Positioning.Demo.WPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+    </Application.Resources>
+</Application>

@@ -1,18 +1,21 @@
-//Project: UbisensePositioning (http://UbisensePositioning.codeplex.com)
-//Filename: MainForm.cs
+﻿//Project: UbisensePositioning (http://UbisensePositioning.codeplex.com)
+//Filename: MainWindow.xaml.cs
 //Version: 20151201
 
 //Based on Ubisense SDK's ObjectPosition sample - http://ubisense.net
 
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
+using System.Windows;
 
 using Ubisense.UBase;
 
-namespace Ubisense.Positioning.Demo.WinForms
+namespace Ubisense.Positioning.Demo.WPF
 {
-  public partial class MainForm : Form
+  /// <summary>
+  /// Interaction logic for MainWindow.xaml
+  /// </summary>
+  public partial class MainWindow : Window
   {
 
     #region --- Constants ---
@@ -30,7 +33,7 @@ namespace Ubisense.Positioning.Demo.WinForms
 
     #region --- Initialization ---
 
-    public MainForm()
+    public MainWindow()
     {
       InitializeComponent();
       InitAsync();
@@ -38,7 +41,7 @@ namespace Ubisense.Positioning.Demo.WinForms
 
     private void InitAsync()
     {
-      Text = Text + STR_INITIALIZING;
+      Title = Title + STR_INITIALIZING;
       ubisensePositioning = new UbisensePositioning(); //initializing here to not delay the user interface's startup
       ubisensePositioning.GetObjectsCompleted += UbisensePositioning_GetObjectsCompleted;
       ubisensePositioning.GetObjectsAsync(); //getting objects may take some time
@@ -53,20 +56,26 @@ namespace Ubisense.Positioning.Demo.WinForms
       //TODO: call ubisensePositioning.Dispose() and set it to null
     }
 
-    private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
-    {
-      Cleanup();
-    }
 
     #endregion
 
     #region --- Properties ---
 
-    private bool NoSelection {
+    private bool NoSelection
+    {
       get
       {
         return (listEntries.SelectedItems.Count == 0);
       }
+    }
+
+    #endregion
+
+    #region --- Methods ---
+
+    private void AddToList(SortedDictionary<string, UObject> objects)
+    {
+      listEntries.DataContext = objects;
     }
 
     #endregion
@@ -83,7 +92,6 @@ namespace Ubisense.Positioning.Demo.WinForms
 
       // These are displayed in the ListView control
       listItem.Text = obj.Id.ToString();
-      listItem.SubItems.Add(name);
 
       listEntries.Items.Add(listItem);
     }
@@ -98,10 +106,10 @@ namespace Ubisense.Positioning.Demo.WinForms
       foreach (var o in objects)
         AddToList(o.Key, o.Value);
 
-      Text = Text.Replace(STR_INITIALIZING, "");
+      Title = Title.Replace(STR_INITIALIZING, "");
     }
 
-    private void listEntries_SelectedIndexChanged(object sender, EventArgs e)
+    private void listEntries_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
     {
       // Has the user selected an entry?
       if (listEntries.SelectedItems.Count != 1)
@@ -112,7 +120,7 @@ namespace Ubisense.Positioning.Demo.WinForms
       }
 
       // Get the selection
-      ListViewItem selectedItem = listEntries.SelectedItems[0];
+      ListViewItem selectedItem = (ListViewItem)listEntries.SelectedValue;
       UObject selectedObject = (UObject)selectedItem.Tag; //we assigned the Tag property of each list item at "AddToList"
 
       // Update the selected Obj
@@ -123,7 +131,7 @@ namespace Ubisense.Positioning.Demo.WinForms
       lblSelectedName.Text = selectedItem.Name;
     }
 
-    private void btnGetPos_Click(object sender, EventArgs e)
+    private void btnGetPos_Click(object sender, RoutedEventArgs e)
     {
       // Has the user selected an entry?
       if (NoSelection) return;
@@ -139,7 +147,7 @@ namespace Ubisense.Positioning.Demo.WinForms
         txtPositionX.Text = txtPositionY.Text = txtPositionZ.Text = STR_NONE;
     }
 
-    private void btnSetPos_Click(object sender, EventArgs e)
+    private void btnSetPos_Click(object sender, RoutedEventArgs e)
     {
       if ((listEntries.SelectedItems.Count != 1) ||
           (txtPositionX.Text == "") ||
@@ -155,7 +163,7 @@ namespace Ubisense.Positioning.Demo.WinForms
       MessageBox.Show(ubisensePositioning.SetPosition(x, y, z) ? "Set position succesfully" : "Failed");
     }
 
-    private void btnRemove_Click(object sender, EventArgs e)
+    private void btnRemove_Click(object sender, RoutedEventArgs e)
     {
       // Has the user selected an entry?
       if (NoSelection) return;
@@ -167,4 +175,19 @@ namespace Ubisense.Positioning.Demo.WinForms
     #endregion
 
   }
+
+  #region ListViewItem class
+
+  public class ListViewItem
+  {
+    public ListViewItem()
+    {
+    }
+
+    public string Name { get; set; }
+    public string Text { get; set; }
+    public object Tag { get; set; }
+  }
+
+  #endregion
 }

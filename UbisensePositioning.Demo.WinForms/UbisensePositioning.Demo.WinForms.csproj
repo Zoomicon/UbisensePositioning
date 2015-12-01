@@ -8,7 +8,7 @@
     <ProjectGuid>{7150D85C-0940-47E6-AEAB-0F200AF68354}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ubisense.Positioning</RootNamespace>
+    <RootNamespace>Ubisense.Positioning.Demo.WinForms</RootNamespace>
     <AssemblyName>UbisensePositioning.Demo.WinForms</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
@@ -37,7 +37,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Ubisense.Positioning.Program</StartupObject>
+    <StartupObject>Ubisense.Positioning.Demo.WinForms.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

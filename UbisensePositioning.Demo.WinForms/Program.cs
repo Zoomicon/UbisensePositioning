@@ -5,7 +5,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace Ubisense.Positioning
+namespace Ubisense.Positioning.Demo.WinForms
 {
     static class Program
     {
