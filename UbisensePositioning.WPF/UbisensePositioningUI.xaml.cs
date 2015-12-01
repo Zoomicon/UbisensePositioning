@@ -92,7 +92,7 @@ namespace Ubisense.Positioning.WPF
 
     #region --- Properties ---
 
-    public UbisensePositioning PositioningU
+    public UbisensePositioning Positioning
     {
       get { return ubisensePositioning; }
     }
