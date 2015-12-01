@@ -1,6 +1,6 @@
 //Project: UbisensePositioning (http://UbisensePositioning.codeplex.com)
 //Filename: MainForm.cs
-//Version: 20151110
+//Version: 20151201
 
 //Based on Ubisense SDK's ObjectPosition sample - http://ubisense.net
 
@@ -18,8 +18,7 @@ namespace Ubisense.Positioning
     #region --- Constants ---
 
     private const string STR_INITIALIZING = " - Getting objects...";
-    private const string STR_NEW = "NEW";
-    private const string STR_NONE = "none";
+    private const string STR_NONE = "";
 
     #endregion
 
@@ -129,32 +128,28 @@ namespace Ubisense.Positioning
       Position? pos = ubisensePositioning.GetPosition();
       if (pos.HasValue)
       {
-        lblCurrentPosX.Text = pos.Value.P.X.ToString();
-        lblCurrentPosY.Text = pos.Value.P.Y.ToString();
-        lblCurrentPosZ.Text = pos.Value.P.Z.ToString();
+        txtPositionX.Text = pos.Value.P.X.ToString();
+        txtPositionY.Text = pos.Value.P.Y.ToString();
+        txtPositionZ.Text = pos.Value.P.Z.ToString();
       }
       else
-        lblCurrentPosX.Text = lblCurrentPosY.Text = lblCurrentPosZ.Text = STR_NONE;
+        txtPositionX.Text = txtPositionY.Text = txtPositionZ.Text = STR_NONE;
     }
 
     private void btnSetPos_Click(object sender, EventArgs e)
     {
       if ((listEntries.SelectedItems.Count != 1) ||
-          (tboxNewPosX.Text == "") ||
-          (tboxNewPosY.Text == "") ||
-          (tboxNewPosZ.Text == ""))
+          (txtPositionX.Text == "") ||
+          (txtPositionY.Text == "") ||
+          (txtPositionZ.Text == ""))
         return;
 
       double x, y, z;
-      if (!double.TryParse(tboxNewPosX.Text, out x) ||
-          !double.TryParse(tboxNewPosY.Text, out y) ||
-          !double.TryParse(tboxNewPosZ.Text, out z)) return;
+      if (!double.TryParse(txtPositionX.Text, out x) ||
+          !double.TryParse(txtPositionY.Text, out y) ||
+          !double.TryParse(txtPositionZ.Text, out z)) return;
 
-      if (ubisensePositioning.SetPosition(x, y, z))
-      {
-        lblCurrentPosX.Text = lblCurrentPosY.Text = lblCurrentPosZ.Text = STR_NEW;
-        tboxNewPosX.Text = tboxNewPosY.Text = tboxNewPosZ.Text = "";
-      }
+      MessageBox.Show(ubisensePositioning.SetPosition(x, y, z) ? "Set position succesfully" : "Failed");
     }
 
     private void btnRemove_Click(object sender, EventArgs e)
@@ -162,8 +157,8 @@ namespace Ubisense.Positioning
       // Has the user selected an entry?
       if (NoSelection) return;
 
-      ubisensePositioning.RemovePosition();
-      lblCurrentPosX.Text = lblCurrentPosY.Text = lblCurrentPosZ.Text = STR_NONE;
+      MessageBox.Show(ubisensePositioning.RemovePosition() ? "Removed position succesfully" : "Failed");
+      txtPositionX.Text = txtPositionY.Text = txtPositionZ.Text = STR_NONE;
     }
 
     #endregion
