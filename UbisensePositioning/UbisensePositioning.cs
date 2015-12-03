@@ -1,14 +1,13 @@
 ﻿//Project: UbisensePositioning (http://UbisensePositioning.codeplex.com)
 //Filename: UbisensePositioning.cs
-//Version: 20151124
+//Version: 20151203
 
-//Based on Ubisense SDK's ObjectPosition sample
+//Based on Ubisense SDK's ObjectPosition and DetectButtonPresses samples
 
 using System.Collections.Generic;
 using System.ComponentModel;
 using Ubisense.UBase;
 using Ubisense.ULocation;
-using Ubisense.UName.Naming;
 
 namespace Ubisense.Positioning
 {
@@ -18,7 +17,8 @@ namespace Ubisense.Positioning
   {
     #region --- Fields ---
 
-    protected Schema namingSchema;
+    protected Ubisense.UName.Naming.Schema namingSchema;
+    protected Ubisense.UData.Data.Schema dataSchema;
     protected MultiCell multicell;
     protected SortedDictionary<string, UObject> objects = new SortedDictionary<string, UObject>(); //using an empty dictionary at start
     protected UObject? selectedObject; //=null
@@ -36,9 +36,17 @@ namespace Ubisense.Positioning
     {
       if (initialized) return;
 
+      InitializePositioning();
+      InitializeButtons();
+
+      initialized = true;
+    }
+
+    protected void InitializePositioning()
+    {
       // Instantiate the schema objects
       multicell = new MultiCell();
-      namingSchema = new Schema(false);
+      namingSchema = new Ubisense.UName.Naming.Schema(false); //note: there are different Schema classes in other namespaces
 
       // Load all the available cells
       foreach (var cellInfo in multicell.GetAvailableCells())
@@ -50,8 +58,20 @@ namespace Ubisense.Positioning
       // Initialize objects and selectedObject
       objects = new SortedDictionary<string, UObject>(); //using an empty dictionary
       selectedObject = null;
+    }
 
-      initialized = true;
+    protected void InitializeButtons()
+    {
+      dataSchema = new Ubisense.UData.Data.Schema(true); //note: there are different Schema classes in other namespaces
+
+      // Connect to the data schema
+      dataSchema.ConnectAsClient();
+
+      // Add an insert event handler to detect the addition of new rows
+      Ubisense.UData.Data.ObjectButtonPressed.AddInsertHandler(dataSchema, OnButton);
+
+      // Add an update event handler to detect updates of existing rows
+      Ubisense.UData.Data.ObjectButtonPressed.AddUpdateHandler(dataSchema, OnButton);
     }
 
     public void CheckInitialized()
@@ -91,8 +111,8 @@ namespace Ubisense.Positioning
       if (!initialized) Initialize();
 
       SortedDictionary<string, UObject> result = new SortedDictionary<string, UObject>();
-      using (ReadTransaction xact = namingSchema.ReadTransaction())
-        foreach (ObjectName.RowType row in ObjectName.object_name_(xact))
+      using (Ubisense.UName.Naming.ReadTransaction xact = namingSchema.ReadTransaction())
+        foreach (Ubisense.UName.Naming.ObjectName.RowType row in Ubisense.UName.Naming.ObjectName.object_name_(xact))
           result.Add(row.name_, row.object_);
       return result;
     }
@@ -197,8 +217,33 @@ namespace Ubisense.Positioning
     #region --- Events ---
 
     public delegate void GetObjectsCompletedEventHandler(object sender, SortedDictionary<string, UObject> objects);
+    public delegate void ButtonPressedEventHandler(object sender, Ubisense.UData.Data.ObjectButtonPressed.RowType? oldRow, Ubisense.UData.Data.ObjectButtonPressed.RowType newRow);
 
     public event GetObjectsCompletedEventHandler GetObjectsCompleted;
+    public event ButtonPressedEventHandler ButtonPressed;
+
+    // Update event handler that just calls the insert event handler with the new row
+    protected void OnButton(Ubisense.UData.Data.ObjectButtonPressed.RowType oldRow, Ubisense.UData.Data.ObjectButtonPressed.RowType newRow)
+    {
+      if (ButtonPressed != null)
+        ButtonPressed(this, oldRow, newRow);
+    }
+
+    // Insert event handler that outputs the button presses to the screen
+    protected void OnButton(Ubisense.UData.Data.ObjectButtonPressed.RowType row)
+    {
+      if (ButtonPressed != null)
+        ButtonPressed(this, null, row);
+    }
+
+    // row.button_ contains the index of the button pressed. Compact tags
+    // have button 1; slim tags have buttons 1 and 2.
+    //
+    // row.object_ contains the Ubisense.ULocationIntegration.Tag whose button
+    // was pressed.
+    //
+    // row.timestamp_ contains the Universal time of the button press.
+
 
     #endregion --- Events ---
   }

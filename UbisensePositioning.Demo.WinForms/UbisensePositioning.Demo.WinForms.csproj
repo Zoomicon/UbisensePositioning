@@ -43,6 +43,9 @@
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="UbisenseLocationServices">
+      <HintPath>..\Libraries\UbisenseLocationServices.dll</HintPath>
+    </Reference>
     <Reference Include="UbisensePlatform, Version=2.1.9.2633, Culture=neutral, PublicKeyToken=bf00ae4f6f53f646, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libraries\UbisensePlatform.dll</HintPath>
@@ -83,10 +86,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UbisensePositioning.WPF\UbisensePositioning.WPF.csproj">
-      <Project>{a7c5cf6b-b412-413b-80c6-b41110d48b1b}</Project>
-      <Name>UbisensePositioning.WPF</Name>
-    </ProjectReference>
     <ProjectReference Include="..\UbisensePositioning\UbisensePositioning.csproj">
       <Project>{03d29bd2-03df-4f86-a5de-9586aa8c150e}</Project>
       <Name>UbisensePositioning</Name>
