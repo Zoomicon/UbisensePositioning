@@ -43,6 +43,11 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UbisenseLocationServices, Version=2.1.9.2633, Culture=neutral, PublicKeyToken=bf00ae4f6f53f646, processorArchitecture=MSIL" />
+    <Reference Include="UbisensePlatform, Version=2.1.9.2633, Culture=neutral, PublicKeyToken=bf00ae4f6f53f646, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\UbisensePlatform.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />

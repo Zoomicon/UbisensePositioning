@@ -44,7 +44,6 @@ namespace Ubisense.Positioning.WPF
       Title = Title + STR_INITIALIZING;
       ubisensePositioning = new UbisensePositioning(); //initializing here to not delay the user interface's startup
       ubisensePositioning.GetObjectsCompleted += UbisensePositioning_GetObjectsCompleted;
-      ubisensePositioning.ButtonPressed += UbisensePositioning_ButtonPressed;
       ubisensePositioning.GetObjectsAsync(); //getting objects may take some time
     }
 
@@ -219,11 +218,6 @@ namespace Ubisense.Positioning.WPF
 
       MessageBox.Show(ubisensePositioning.RemovePosition() ? "Removed position succesfully" : "Failed");
       txtPositionX.Text = txtPositionY.Text = txtPositionZ.Text = STR_NONE;
-    }
-
-    private void UbisensePositioning_ButtonPressed(object sender, Ubisense.UData.Data.ObjectButtonPressed.RowType? oldRow, Ubisense.UData.Data.ObjectButtonPressed.RowType newRow)
-    {
-      MessageBox.Show(string.Format("Tag ID: {0}, Button: {1}, Time: {2}", newRow.object_.Id, newRow.button_, newRow.timestamp_), "Button Pressed");
     }
 
     #endregion
