@@ -5,7 +5,7 @@ http://UbisensePositioning.codeplex.com
 Project Description
 --------------------
 
-Reading and Writing of Ubisense objects' position
+Reading and Writing of Ubisense objects' position and Listening for Ubisense Tag button presses
 
 based on Ubisense's ObjectPosition and DetectButtonPresses samples
 
