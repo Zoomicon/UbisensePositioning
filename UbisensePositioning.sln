@@ -24,6 +24,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UbisensePositioning.Demo.WP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UbisensePositioning.WPF", "UbisensePositioning.WPF\UbisensePositioning.WPF.csproj", "{A7C5CF6B-B412-413B-80C6-B41110D48B1B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Diagrams", "Diagrams", "{3912BD0A-3200-4752-997D-980D6F7D8FA7}"
+	ProjectSection(SolutionItems) = preProject
+		UbisensePositioning\UbisensePositioning.cd = UbisensePositioning\UbisensePositioning.cd
+		UbisensePositioning.WPF\UbisensePositioning.WPF.cd = UbisensePositioning.WPF\UbisensePositioning.WPF.cd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
