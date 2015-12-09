@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Ubisense.Positioning.UbisensePositioning">
+    <Position X="0.5" Y="0.5" Width="3" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="Ubisense.Positioning.UbisensePositioning.GetObjectsCompletedEventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>UbisensePositioning.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="Ubisense.Positioning.UbisensePositioning.ButtonPressedEventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>UbisensePositioning.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AQFCEAgAADAAAQAAACAQMQAAEQEAAgGIBAgAAgAAAAA=</HashCode>
+      <FileName>UbisensePositioning.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

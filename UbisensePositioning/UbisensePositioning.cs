@@ -1,19 +1,21 @@
 ﻿//Project: UbisensePositioning (http://UbisensePositioning.codeplex.com)
 //Filename: UbisensePositioning.cs
-//Version: 20151203
+//Version: 20151209
 
 //Based on Ubisense SDK's ObjectPosition and DetectButtonPresses samples
 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+
 using Ubisense.UBase;
 using Ubisense.ULocation;
 
 namespace Ubisense.Positioning
 {
-  //TODO: implement IDisposable and call into a protected ReleaseUbisense method
+  //TODO: Add support for ubisense regions using the same pattern that has been implemented for ubisense tag buttons
 
-  public class UbisensePositioning
+  public class UbisensePositioning : IDisposable
   {
     #region --- Fields ---
 
@@ -24,7 +26,7 @@ namespace Ubisense.Positioning
     protected UObject? selectedObject; //=null
     protected bool initialized; //=false
 
-    #endregion --- Fields ---
+    #endregion
 
     #region --- Initialization ---
 
@@ -80,7 +82,44 @@ namespace Ubisense.Positioning
         Initialize();
     }
 
-    #endregion --- Initialization ---
+    #endregion
+
+    #region --- Cleanup ---
+
+    private bool disposedValue = false; // To detect redundant calls
+
+    protected virtual void Dispose(bool disposing)
+    {
+      if (!disposedValue)
+      {
+        if (disposing)
+        {
+          // TODO: dispose managed state (managed objects).
+        }
+
+        // free unmanaged resources (unmanaged objects) and override a finalizer below.
+        // set large fields to null.
+
+        disposedValue = true;
+      }
+    }
+
+    // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+    // ~UbisensePositioning() {
+    //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+    //   Dispose(false);
+    // }
+
+    // This code added to correctly implement the disposable pattern.
+    public void Dispose()
+    {
+      // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+      Dispose(true);
+      // TODO: uncomment the following line if the finalizer is overridden above.
+      // GC.SuppressFinalize(this);
+    }
+
+    #endregion
 
     #region --- Properties ---
 
@@ -100,7 +139,7 @@ namespace Ubisense.Positioning
       set { selectedObject = value; }
     }
 
-    #endregion --- Properties ---
+    #endregion
 
     #region --- Methods ---
 
@@ -212,7 +251,7 @@ namespace Ubisense.Positioning
 
     #endregion RemovePosition
 
-    #endregion --- Methods ---
+    #endregion
 
     #region --- Events ---
 
@@ -245,6 +284,6 @@ namespace Ubisense.Positioning
     // row.timestamp_ contains the Universal time of the button press.
 
 
-    #endregion --- Events ---
+    #endregion
   }
 }

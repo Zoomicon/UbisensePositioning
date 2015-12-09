@@ -1,9 +1,10 @@
 ﻿//Project: UbisensePositioning (http://UbisensePositioning.codeplex.com)
 //Filename: UbisensePositioningUI.xaml.cs
-//Version: 20151203
+//Version: 20151209
 
 //Based on Ubisense SDK's ObjectPosition sample - http://ubisense.net
 
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,7 +16,7 @@ namespace Ubisense.Positioning.WPF
   /// <summary>
   /// Interaction logic for UbisensePositioningUI.xaml
   /// </summary>
-  public partial class UbisensePositioningUI : UserControl
+  public partial class UbisensePositioningUI : UserControl, IDisposable
   {
 
     #region --- Constants ---
@@ -84,8 +85,11 @@ namespace Ubisense.Positioning.WPF
 
     public void Cleanup()
     {
-      //TODO: call ubisensePositioning.Dispose() and set it to null
-      ubisensePositioning = null;
+      if (ubisensePositioning != null)
+      {
+        ubisensePositioning.Dispose();
+        ubisensePositioning = null;
+      }
     }
 
     #endregion
