@@ -1,5 +1,4 @@
-UbisensePositioning
-http://UbisensePositioning.codeplex.com
+UbisensePositioning - http://github.com/Zoomicon/UbisensePositioning
 
 
 Project Description
